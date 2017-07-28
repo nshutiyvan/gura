@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="row">
+        <div class="thumbnail img-rounded">
+          <img src="{{ user_profile.image.url  }}" class="img-rounded img-responsive">
+          <div class="caption">
+            <h3>{{ request.user }}</h3>
+            <p>
+              <a href="#" class="btn btn-primary" role="button">Edit Bio</a>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Change Image</button>
+              <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+                      <input type="file" name="image">
+                      <input type="submit" value="Upload" class="btn btn-primary btn-block">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </p>
+          </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title text-success">My Bio</h3>
+          </div>
+          <div class="panel-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Accusantium, amet delectus distinctio dolor eius enim fugiat
+            fugit hic, laudantium molestiae,obcaecati possimus provident
+            quas quis quo sunt voluptatum. Facere, quae?
+          </div>
+        </div>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#">Answers</a></li>
+          <li role="presentation"><a href="#">Projects<span class="badge">42</span></a></li>
+          <li role="presentation"><a href="#">Friends</a></li>
+          <li role="presentation"><a href="#">Feeds</a></li>
+        </ul>
+         <ul class="media-list">
+          <li class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="{% static 'images/1.jpg' %}" style="height:64px;width:64px">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Your Question</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Eligendi molestiae quod sit. Alias aliquid, consequatur debitis
+                ea eos illo ipsam iure, iusto magnam numquam omnis provident
+                quaerat, reprehenderit suscipit totam!</p>
+            </div>
+          </li>
+        </ul>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+  </div>
+</div>
+{% endblock %}
