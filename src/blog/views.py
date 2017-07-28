@@ -21,3 +21,7 @@ def Dashboard(request):
         'user_profile':profile,
         }
     return render(request,template_name,context)
+
+def Home(request):
+    template_name='blog/home.html'
+    return render(request,template_name)
